@@ -1,28 +1,31 @@
-== README
+# Fyber API Consumer
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Web application which consumes the Fyber Offer API and renders its responses.
 
-Things you may want to cover:
+Live demo on Heroku: https://infinite-mesa-6047.herokuapp.com/
 
-* Ruby version
+Ruby 2.0.0 used to develop lib, Ruby on Rails 4.2.0 used as a framework.
+RSpec used as a testing framework. VCR use to replay HTTP requests. Webmock to simulate HTTP error responses.
 
-* System dependencies
+# Params
+* uid - mondatory
+* pub0 - optional
+* page - optional
 
-* Configuration
+# Approach
 
-* Database creation
+Developed consumer as a lib so it can be extracted to seperate gem.
 
-* Database initialization
+Each class responsible for one work work.
 
-* How to run the test suite
+Signature works only with generating and validating hashkeys
 
-* Services (job queues, cache servers, search engines, etc.)
+Api class responsible only for transport of data.
 
-* Deployment instructions
+Offer class reads data and prepare it for use.
 
-* ...
+To speedup tests VCR used for replaying requests.
+
+#### Bug found during challenge
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
