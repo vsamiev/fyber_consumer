@@ -6,4 +6,4 @@ VCR.configure do |config|
   config.hook_into :webmock
 end
 
-WebMock.disable_net_connect!(allow_localhost: true)
+# WebMock.disable_net_connect!(allow_localhost: true)

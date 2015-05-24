@@ -24,9 +24,13 @@ module FyberConsumer
       response = get signed_params
 
       request_result = Hash.new
-      request_result[:status] = set_status response
-      request_result[:body] = json_data response
-
+      status = set_status response
+      if status != "ERR_FAKE_DATA"
+        request_result[:status] = status
+        request_result[:body] = json_data response
+      else
+        request_result[:status] = status
+      end
       return request_result
 
     end
@@ -85,8 +89,6 @@ module FyberConsumer
 
       return params_hash
     end
-
-
 
 
   end

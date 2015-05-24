@@ -4,16 +4,14 @@ require 'fyber_consumer'
 RSpec.describe "Api" do
   describe "methods" do
     before(:each) do
-
       @uid = "player1"
       @pub0 = "campaign2"
       @page = "2"
-
     end
 
     it 'gets successful response' do
-      VCR.use_cassette("err_ok") do
-        Timecop.freeze(Time.local(2015, 05, 24, 8, 37, 0))
+      VCR.use_cassette("err_ok", :record => :new_episodes) do
+        Timecop.freeze(Time.local(2015, 05, 24, 17, 9, 16))
         api = FyberConsumer::Api.new(@uid, @pub0, @page)
         response = api.request
         expect(response[:status]).to eq "ERR_OK"

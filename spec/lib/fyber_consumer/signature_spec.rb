@@ -16,7 +16,8 @@ RSpec.describe "Signature" do
       @params["timestamp"] = "1312553361"
       @api_key = "e95a21621a1865bcbae3bee89c4d4f84"
     end
-    it "orders params" do
+
+    it "generates calid haskey" do
       signature =  FyberConsumer::Signature.new(@params, @api_key)
       expect(signature.hashkey).to eq "7a2b1604c03d46eec1ecd4a686787b75dd693c4d"
     end
