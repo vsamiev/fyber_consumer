@@ -40,6 +40,8 @@ gem 'bootstrap-sass', '~> 3.3.4'
 
 gem 'rails_12factor', group: :production
 
+gem 'puma'
+
 group :development, :test do
   gem 'sqlite3'
 
