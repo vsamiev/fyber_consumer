@@ -20,4 +20,4 @@
 /config/secrets.yml
 
 #ignore ide files
-/.idea
+/.idea.env
