@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.sponsorpay.com/feed/v1/offers.json?appid=157&apple_idfa=2e7ce4b3-f68a-44d9-a923-f4e48d92b31e&apple_idfa_tracking_enabled=false&device=phone&device_id=2b6f0cc904d137be2e1730235f5664094b83&hashkey=89335757e0b650843557a2daed9401b02d7d0dff&ip=109.235.143.113&locale=de&offer_types=112&os_version=6.0&page=2&pub0=campaign2&timestamp=1432476556&uid=player1
+    uri: http://api.sponsorpay.com/feed/v1/offers.json?appid=157&apple_idfa_tracking_enabled=false&device=phone&device_id=2b6f0cc904d137be2e1730235f5664094b83&hashkey=692c94ce18950f570681c00f267867674aa41aa3&ip=109.235.143.113&locale=de&offer_types=112&os_version=6.1&page=2&pub0=campaign2&timestamp=1432476556&uid=player1
     body:
       encoding: US-ASCII
       string: ''
@@ -39,9 +39,9 @@ http_interactions:
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       X-Runtime:
-      - '0.592835'
+      - '1.080673'
       Date:
-      - Sun, 24 May 2015 14:39:09 GMT
+      - Sun, 24 May 2015 19:10:12 GMT
       X-Rack-Cache:
       - miss
       X-Powered-By:

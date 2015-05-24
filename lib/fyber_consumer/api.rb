@@ -6,7 +6,7 @@ module FyberConsumer
 
     # Config constants
 
-    PROVIDER_URI = APP_CONFIG['provider_uri']
+    PROVIDER_URI = 'http://api.sponsorpay.com/feed/v1/offers.json'
     ACCEPT_FORMAT = :json
     API_KEY = Rails.application.secrets.fyber_api_key
 
@@ -98,15 +98,14 @@ module FyberConsumer
     protected
     def config_params
       params_hash = Hash.new
-      params_hash['appid'] = APP_CONFIG["appid"]
-      params_hash['locale'] = APP_CONFIG["locale"].downcase
-      params_hash['os_version'] = APP_CONFIG["os_version"]
-      # params_hash['apple_idfa'] = APP_CONFIG["apple_idfa"].downcase
-      params_hash['apple_idfa_tracking_enabled'] = APP_CONFIG["apple_idfa_tracking_enabled"]
-      params_hash['ip'] = APP_CONFIG["ip"]
-      params_hash['offer_types'] = APP_CONFIG["offer_types"]
-      params_hash["device"] = APP_CONFIG["device"].downcase
-      params_hash['device_id'] = APP_CONFIG["device_id"].downcase
+      params_hash['appid'] = Rails.application.secrets.fyber_appid
+      params_hash['locale'] = Rails.application.secrets.fyber_locale
+      params_hash['os_version'] = Rails.application.secrets.fyber_os_version
+      params_hash['apple_idfa_tracking_enabled'] = Rails.application.secrets.fyber_apple_idfa_tracking_enabled
+      params_hash['ip'] = Rails.application.secrets.fyber_ip
+      params_hash['offer_types'] = Rails.application.secrets.fyber_offer_types
+      params_hash["device"] = Rails.application.secrets.fyber_device
+      params_hash['device_id'] = Rails.application.secrets.fyber_device_id
       params_hash["timestamp"] = Time.now.to_i
 
       return params_hash
