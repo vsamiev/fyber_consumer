@@ -26,6 +26,15 @@ Offer class reads data and prepare it for use.
 
 To speedup tests VCR used for replaying requests.
 
-#### Bug found during challenge
+#### Bug found on Fyber API interface
+When getting responses with error messages such as ERROR_INVALID_PAGE, ERROR_INVALID_UID, etc
+params in body hash starts with a colon:
+```ruby
+{":http_code" => "400" ":code" => "ERROR_INVALID_UID"}
+```
+in case of successfull responseses thee is no colons:
+```ruby
+{"http_code" => "200" "code" => "OK"}
+```
 
 
