@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.sponsorpay.com/feed/v1/offers.json?appid=157&apple_idfa_tracking_enabled=false&device=tablet&device_id=2b6f0cc904d137be2e1730235f5664094b83&format=json&hashkey=49d347ee3f4eeabe51cbd7dd16be13b9c68b8afb&ip=109.235.143.113&locale=de&offer_types=112&os_version=6.0&page=2&ps_time=1312211903&pub0=campaign2&timestamp=1432457656&uid=player1
+    uri: http://api.sponsorpay.com/feed/v1/offers.json?appid=157&apple_idfa=2e7ce4b3-f68a-44d9-a923-f4e48d92b31e&apple_idfa_tracking_enabled=false&device=tablet&device_id=2b6f0cc904d137be2e1730235f5664094b83&hashkey=4145365d54444a9821e2fc15964d12909dee3bc8&ip=109.235.143.113&locale=de&offer_types=112&os_version=6.0&page=2&pub0=campaign2&timestamp=1432445820&uid=player1
     body:
       encoding: US-ASCII
       string: ''
@@ -33,15 +33,15 @@ http_interactions:
       Expires:
       - Fri, 01 Jan 1990 00:00:00 GMT
       X-Sponsorpay-Response-Signature:
-      - a96847b09680cea2516543010e7ae699ad5313d7
+      - dfdf77407988a43df88c0f7b5f3bd12b0a7a56c5
       X-Sponsorpay-Response-Code:
-      - OK
+      - NO_CONTENT
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       X-Runtime:
-      - '0.254083'
+      - '0.701754'
       Date:
-      - Sun, 24 May 2015 08:54:38 GMT
+      - Sun, 24 May 2015 13:54:39 GMT
       X-Rack-Cache:
       - miss
       X-Powered-By:
@@ -53,36 +53,13 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        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
-        AAA=
+        H4sIAAAAAAAAAwIAAAD//zSQQWvDMAyF/4rQoaesWQ9jECg7tL22h/U2RnAc
+        pxE4tidbhVD636em281PPL9PTze0sXfY4PHU7k7H8+F4xgonl7O5PMafYq2K
+        QTyw+xGXSwWdFAgR4jA4zmDYgRVmF4qfwVwNedN5B0NkKCNlkOx4raE2SijY
+        vFaYNDsvLwpqm0yhGLC5oUmpDWZ6gPduikADq1qiknSe8ugYXqCPyi9QothR
+        g/UX9dhs3t4rvBIXMb59bmRnTdpFCvmfz4/J/qDSm3CRZ8lFZ0kpcmmFvVrG
+        UlJT10vH9TB3WsHGqZ5iR97Vf96PhbxV8Mp60gNsTaKVUL9N3syON3iv8Hkm
+        bL6+778AAAD//wMA/CNpum0BAAA=
     http_version: 
-  recorded_at: Sun, 24 May 2015 08:54:39 GMT
+  recorded_at: Sun, 24 May 2015 05:37:00 GMT
 recorded_with: VCR 2.9.3

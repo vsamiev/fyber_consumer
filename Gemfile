@@ -51,6 +51,7 @@ group :development, :test do
     gem 'guard-rspec'
     gem 'vcr'
     gem 'webmock'
+    gem 'timecop'
   end
 
 
