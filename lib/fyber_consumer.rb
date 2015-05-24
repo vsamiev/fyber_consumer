@@ -1,7 +1,8 @@
-require "cloud_uploader/version"
+require "fyber_consumer/version"
 
 module FyberConsumer
   require 'fyber_consumer/signature'
+  require 'fyber_consumer/api'
 
 
   class << self
