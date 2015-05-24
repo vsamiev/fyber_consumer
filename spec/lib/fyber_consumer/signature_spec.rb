@@ -3,6 +3,7 @@ require 'fyber_consumer'
 
 RSpec.describe "Signature" do
   describe "methods" do
+
     before(:each) do
       @params = Hash.new
       @params['appid'] = "157"

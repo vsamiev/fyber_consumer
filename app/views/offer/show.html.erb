@@ -1,0 +1,61 @@
+<div class="row clearfix">
+  <div class="col-md-12 column">
+    <div class="page-header">
+      <h1>
+        Fyber Offers Api Consumer Result
+      </h1>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          Status: <%= @offer.status %>
+        </h3>
+      </div>
+      <div class="panel-body">
+        <p><%= @offer.http_code %></p>
+
+        <p>Code: <%= @offer.code %></p>
+
+        <p>Message: <%= @offer.message %></p>
+      </div>
+      <div class="panel-footer">
+        <%= link_to "New Request", offer_index_path, class: "btn btn-primary btn-default btn-sm" %>
+      </div>
+    </div>
+
+    <% if @offer.offers && @offer.offers.length > 0 %>
+        <% @offer.offers.in_groups_of(4, false) do |row_offers| %>
+            <div class="row">
+              <% row_offers.each do |offer| %>
+                  <div class="col-md-3">
+                    <div class="thumbnail">
+                      <%= image_tag offer['thumbnail']['lowres'], width: 300 %>
+
+                      <div class="caption">
+                        <h3>
+                          <%= offer['title'] %>
+                        </h3>
+
+                        <p>
+                          <%= offer['payout'] %>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+              <% end %>
+            </div>
+        <% end %>
+    <% else %>
+        <% if @offer.offers %>
+            <div class="jumbotron">
+              <p>
+                No offers available
+              </p>
+
+            </div>
+        <% end %>
+    <% end %>
+
+  </div>
+</div>

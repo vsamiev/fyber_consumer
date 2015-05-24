@@ -3,6 +3,7 @@ require 'fyber_consumer'
 
 RSpec.describe "Api" do
   describe "methods" do
+
     before(:each) do
       @uid = "player1"
       @pub0 = "campaign2"
@@ -12,6 +13,7 @@ RSpec.describe "Api" do
     it 'gets successful response' do
       VCR.use_cassette("err_ok", :record => :new_episodes) do
         Timecop.freeze(Time.local(2015, 05, 24, 17, 9, 16))
+
         api = FyberConsumer::Api.new(@uid, @pub0, @page)
         response = api.request
         expect(response[:status]).to eq "ERR_OK"
@@ -21,6 +23,7 @@ RSpec.describe "Api" do
     it "handles 400 error code" do
       VCR.turned_off do
         stub_request(:any, /.*/).to_return(status: 400)
+
         api = FyberConsumer::Api.new(@uid, @pub0, @page)
         response = api.request
         expect(response[:status]).to eq "ERR_BAD_REQUEST"
@@ -30,6 +33,7 @@ RSpec.describe "Api" do
     it "handles 401 error code" do
       VCR.turned_off do
         stub_request(:any, /.*/).to_return(status: 401)
+
         api = FyberConsumer::Api.new(@uid, @pub0, @page)
         response = api.request
         expect(response[:status]).to eq "ERR_UNAUTHORIZED"
@@ -39,6 +43,7 @@ RSpec.describe "Api" do
     it "handles 404 error code" do
       VCR.turned_off do
         stub_request(:any, /.*/).to_return(status: 404)
+
         api = FyberConsumer::Api.new(@uid, @pub0, @page)
         response = api.request
         expect(response[:status]).to eq "ERR_NOT_FOUND"
@@ -48,6 +53,7 @@ RSpec.describe "Api" do
     it "handles 500 error code" do
       VCR.turned_off do
         stub_request(:any, /.*/).to_return(status: 500)
+
         api = FyberConsumer::Api.new(@uid, @pub0, @page)
         response = api.request
         expect(response[:status]).to eq "ERR_INTERNAL_ERROR"
@@ -57,6 +63,7 @@ RSpec.describe "Api" do
     it "handles 502 error code" do
       VCR.turned_off do
         stub_request(:any, /.*/).to_return(status: 502)
+
         api = FyberConsumer::Api.new(@uid, @pub0, @page)
         response = api.request
         expect(response[:status]).to eq "ERR_BAD_GATEWAY"
@@ -65,11 +72,16 @@ RSpec.describe "Api" do
 
     it "fails with invalid hashkey" do
       VCR.turned_off do
+        # first generate hashkey
         @api_key = "b07a12df7d52e6c118e5d47d3f9e60135b109a1f"
         body = "original message body goes here"
         signature = Digest::SHA1.hexdigest(body + @api_key)
+
+        # change body to fire invalid hashkey
         body = "fake message body goes here"
+
         stub_request(:any, /.*/).to_return(status: 200, body: body, headers: {'X-Sponsorpay-Response-Signature' => signature})
+
         api = FyberConsumer::Api.new(@uid, @pub0, @page)
         response = api.request
         expect(response[:status]).to eq "ERR_FAKE_DATA"

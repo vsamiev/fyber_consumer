@@ -1,40 +1,59 @@
 module FyberConsumer
   class Api
-    # RestClient.log = "stdout"
+    # Api class make requests to provider
+    # We do not care about data inside body it is work of Offer class
+    # Only care about calls, http statuses and security
+
+    # Config constants
 
     PROVIDER_URI = APP_CONFIG['provider_uri']
     ACCEPT_FORMAT = :json
-    API_KEY = APP_CONFIG['api_key']
+    API_KEY = Rails.application.secrets.fyber_api_key
 
     def initialize uid, pub0 = nil, page = nil
 
+      # uid is mandatory
       raise ArgumentError, 'uid not defined' if uid.nil? or uid.to_s.length == 0
 
+      # set input params
       @request_params = Hash.new
       @request_params['uid'] = uid
       @request_params['pub0'] = pub0 if pub0.to_s.length > 0
       @request_params['page'] = page if page.to_s.length > 0
+
+      # merge with config params
       @request_params = @request_params.merge(config_params)
     end
 
     def request
+
+      # prepare hashkey
       signature = FyberConsumer::Signature.new @request_params, API_KEY
       signed_params = {'hashkey' => signature.hashkey}.merge @request_params
 
+      # get response
       response = get signed_params
 
+      # prepare result for offer class
       request_result = Hash.new
+
+      # check for valid hashkey
       status = set_status response
       if status != "ERR_FAKE_DATA"
+
+        # if not fake assign data for offer class
         request_result[:status] = status
         request_result[:body] = json_data response
       else
+
+        # otherwise only status of fake
         request_result[:status] = status
       end
-      return request_result
 
+      return request_result
     end
 
+    # call api provider with params, if error occurred also return response also for processing
     private
     def get params
       return RestClient.get(PROVIDER_URI, {:accept => ACCEPT_FORMAT, :params => params}) { |response, request, result|
@@ -42,6 +61,7 @@ module FyberConsumer
       }
     end
 
+    # checking response codes
     def set_status response
       case response.code
         when 200
@@ -65,6 +85,7 @@ module FyberConsumer
       end
     end
 
+    # json helper
     def json_data response
       begin
         return @json ||= JSON.parse(response.body)
@@ -73,14 +94,15 @@ module FyberConsumer
       end
     end
 
+    # config assignment, downcase all strings for valid hashkeys
     protected
     def config_params
       params_hash = Hash.new
       params_hash['appid'] = APP_CONFIG["appid"]
       params_hash['locale'] = APP_CONFIG["locale"].downcase
       params_hash['os_version'] = APP_CONFIG["os_version"]
-      params_hash['apple_idfa'] = APP_CONFIG["apple_idfa"].downcase
-      params_hash['apple_idfa_tracking_enabled'] = APP_CONFIG["apple_idfa_tracking_enabled"].downcase
+      # params_hash['apple_idfa'] = APP_CONFIG["apple_idfa"].downcase
+      params_hash['apple_idfa_tracking_enabled'] = APP_CONFIG["apple_idfa_tracking_enabled"]
       params_hash['ip'] = APP_CONFIG["ip"]
       params_hash['offer_types'] = APP_CONFIG["offer_types"]
       params_hash["device"] = APP_CONFIG["device"].downcase
