@@ -1,0 +1,34 @@
+development:
+  appid: "157"
+  locale: "de"
+  os_version: "6.0"
+  apple_idfa: "2E7CE4B3-F68A-44D9-A923-F4E48D92B31E"
+  apple_idfa_tracking_enabled: "false"
+  ip: "109.235.143.113"
+  offer_types: "112"
+  ps_time: "1312211903"
+  device_id: "2b6f0cc904d137be2e1730235f5664094b83"
+
+test:
+  appid: "157"
+  locale: "de"
+  os_version: "6.0"
+  apple_idfa: "2E7CE4B3-F68A-44D9-A923-F4E48D92B31E"
+  apple_idfa_tracking_enabled: "false"
+  ip: "109.235.143.113"
+  offer_types: "112"
+  ps_time: "1312211903"
+  device_id: "2b6f0cc904d137be2e1730235f5664094b83"
+
+# Do not keep production secrets in the repository,
+# instead read values from the environment.
+production:
+  appid: "157"
+  locale: "de"
+  os_version: "6.0"
+  apple_idfa: "2E7CE4B3-F68A-44D9-A923-F4E48D92B31E"
+  apple_idfa_tracking_enabled: "false"
+  ip: "109.235.143.113"
+  offer_types: "112"
+  ps_time: "1312211903"
+  device_id: "2b6f0cc904d137be2e1730235f5664094b83"
