@@ -9,6 +9,10 @@ module FyberConsumer
       return sign_payload @base_string
     end
 
+    def self.valid_response? payload, hashkey, api_key
+      return Digest::SHA1.hexdigest(payload + api_key) == hashkey
+    end
+
     # loop over ordered keys to prepare concatenated params string
     private
     def base_string params

@@ -3,6 +3,7 @@ require "fyber_consumer/version"
 module FyberConsumer
   require 'fyber_consumer/signature'
   require 'fyber_consumer/api'
+  require 'fyber_consumer/offer'
 
 
   class << self

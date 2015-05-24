@@ -49,6 +49,8 @@ group :development, :test do
   group :test do
     gem 'capybara'
     gem 'guard-rspec'
+    gem 'vcr'
+    gem 'webmock'
   end
 
 
