@@ -16,8 +16,5 @@
 !/log/.keep
 /tmp
 
-#ignore secret keys
-/config/secrets.yml
-
 #ignore ide files
 /.idea.env
